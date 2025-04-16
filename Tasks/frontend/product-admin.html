@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Admin | JyotiKart</title>
+    <link rel="stylesheet" href="./stylesheet/admin-style.css" />
+  </head>
+  <body>
+    <!-- Navigation -->
+    <header>
+      <nav>
+        <div class="logo">JyotiKart</div>
+        <div class="nav-links">
+          <ul>
+            <a href="index.html"><li>Home</li></a>
+            <a href="index.html#products"><li>Products</li></a>
+            <a href="product-admin.html"><li>Admin</li></a>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Admin Panel -->
+    <main class="admin-container">
+      <!-- Add Product Section -->
+      <section class="admin-section">
+        <h2>Add New Product</h2>
+        <form id="addProductForm">
+          <input type="text" id="name" placeholder="Product Name" required />
+          <input
+            type="number"
+            id="price"
+            placeholder="Product Price"
+            required
+          />
+          <input type="text" id="image" placeholder="Image URL (optional)" />
+          <button type="submit">Add Product</button>
+        </form>
+      </section>
+      <section id="products">
+        <h2 style="text-align: center">Your Products</h2>
+        <div class="product-container-admin"></div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact-us">
+      <!-- Newsletter Signup -->
+      <div class="newsletter">
+        <h2>Stay Inspired</h2>
+        <p>
+          Get exclusive products, smartphones, and different types of products.
+        </p>
+        <div class="newsletter-form">
+          <input type="email" placeholder="nirmaljyotithakuria@gmail.com" />
+          <button>Join</button>
+        </div>
+      </div>
+
+      <!-- Footer Content -->
+      <div class="footer-main">
+        <div class="footer-column">
+          <h3>About Us</h3>
+          <p>
+            I am Nirmal Jyoti Thakuria, a fullstack web developer. Lorem ipsum
+            dolor sit amet consectetur adipisicing elit. Inventore cum dolorem
+            ipsa possimus repellat dignissimos! Vel veritatis illum quis.
+          </p>
+        </div>
+
+        <div class="footer-column">
+          <h3>Follow Us</h3>
+          <a href="#">Instagram</a>
+          <a href="#">Pinterest</a>
+          <a href="#">Facebook</a>
+        </div>
+
+        <div class="footer-column">
+          <h3>Our Spaces</h3>
+          <div class="image-gallery">
+            <img
+              src="https://cdn.thewirecutter.com/wp-content/media/2023/07/bluetoothheadphones-2048px-0876.jpg"
+              alt="Gallery 1"
+            />
+            <img
+              src="https://cdn.thewirecutter.com/wp-content/media/2023/07/bluetoothheadphones-2048px-0876.jpg"
+              alt="Gallery 2"
+            />
+            <img
+              src="https://cdn.thewirecutter.com/wp-content/media/2023/07/bluetoothheadphones-2048px-0876.jpg"
+              alt="Gallery 3"
+            />
+            <img
+              src="https://cdn.thewirecutter.com/wp-content/media/2023/07/bluetoothheadphones-2048px-0876.jpg"
+              alt="Gallery 4"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="footer-bottom">© 2025 NirmalJT. All rights reserved.</div>
+    </footer>
+    <script src="./javascript/script.js"></script>
+  </body>
+</html>

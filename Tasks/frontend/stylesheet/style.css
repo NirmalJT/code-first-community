@@ -1,0 +1,243 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+nav,
+.nav-links ul {
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+  gap: 1.5rem;
+  padding: 1rem;
+}
+nav ul  a{
+  text-decoration: none;
+  color: black;
+
+}
+.logo {
+  font-size: 2rem;
+  font-weight: bold;
+  color: rgba(5, 76, 115, 1);
+  font-family: serif;
+}
+ul li {
+  cursor: pointer;
+  padding: 0.5rem;
+}
+ul li:hover {
+  background-color: rgba(5, 76, 115, 1);
+  color: white;
+  border-radius: 1rem;
+}
+/* .hero-section {
+  position: relative;
+} */
+.pop-op-window {
+  background-color: rgba(223, 233, 244, 1);
+  width: 25vw;
+  height: 40vh;
+  border-radius: 0.8rem;
+  padding: 2rem;
+  position: relative;
+  z-index: 1;
+  bottom: 10rem;
+  bottom: 42rem;
+  left: 54rem;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+.pop-op-window h1 {
+  color: rgba(5, 76, 115, 1);
+  font-family: serif;
+  font-size: 2.4rem;
+}
+.pop-op-window small {
+  font-weight: 500;
+}
+.pop-op-buy-btn {
+  background-color: rgba(5, 76, 115, 1);
+  color: #fff;
+  padding: 0.8rem;
+  text-align: center;
+  border-radius: 1.5rem;
+}
+
+.delivery-msg-container {
+  background-color: rgba(242, 245, 255, 1);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 2rem;
+}
+header {
+  height: 100%;
+}
+
+/*  */
+h2 {
+  text-align: center;
+  text-decoration: underline;
+  font-size: 2rem;
+  padding-bottom: 3rem;
+}
+section {
+  height: 100vh;
+  padding: 3rem;
+  overflow: scroll;
+}
+.product {
+  background-color: rgba(223, 233, 244, 1);
+  border-radius: 1rem;
+  width: fit-content;
+  height: 60vh;
+  padding: 0.5rem;
+}
+.product img {
+  border-radius: 1rem;
+  height: 250px;
+  object-fit: cover;
+}
+.product-name {
+  font-family: serif;
+  font-size: 1.3rem;
+}
+.product-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  justify-content: space-around;
+}
+.product-buy-links {
+  display: flex;
+  justify-content: space-around;
+}
+.add-to-cart {
+  background-color: rgb(202, 195, 195);
+  color: rgb(102, 97, 97);
+  border-radius: 1rem;
+  padding: 0.6rem;
+  cursor: pointer;
+}
+.buy {
+  background-color: rgba(5, 76, 115, 1);
+  border-radius: 1rem;
+  padding: 0.6rem 1.5rem;
+  color: white;
+  cursor: pointer;
+}
+.add-to-cart:hover {
+  transition: all 70ms;
+  scale: 105%;
+  background-color: rgb(179, 174, 174);
+}
+.buy:hover {
+  transition: all 70ms;
+  scale: 105%;
+  background-color: rgb(3, 64, 96);
+}
+.product-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3rem;
+  justify-content: center;
+  align-items: center;
+}
+
+/*  */
+.footer {
+  background-color: #0d1b2a;
+  color: white;
+  font-family: sans-serif;
+}
+
+.newsletter {
+  background-color: #f3f4f6;
+  color: #1f2937;
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.newsletter h2 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.newsletter-form {
+  margin-top: 20px;
+}
+
+.newsletter-form input {
+  padding: 10px;
+  width: 250px;
+  max-width: 70%;
+  border: 1px solid #ccc;
+  border-right: none;
+  border-radius: 4px 0 0 4px;
+}
+
+.newsletter-form button {
+  padding: 10px 20px;
+  background-color: #1f2937;
+  color: white;
+  border: none;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+}
+
+.footer-main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.footer-column {
+  flex: 1;
+  min-width: 250px;
+  margin-bottom: 30px;
+}
+
+.footer-column h3 {
+  margin-bottom: 15px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.footer-column p,
+.footer-column a {
+  font-size: 14px;
+  color: #ccc;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.footer-column a:hover {
+  text-decoration: underline;
+}
+
+.image-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.image-gallery img {
+  width: 100%;
+  border-radius: 6px;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding: 20px;
+  font-size: 13px;
+  border-top: 1px solid #1e293b;
+  color: #aaa;
+}

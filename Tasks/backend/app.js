@@ -15,7 +15,7 @@ app.get("/api/products", (req, res) => {
 });
 app.post("/api/products", (req, res) => {
   const { name, price, image } = req.body;
-  if (!name || !price || !image) {
+  if (!name || !price) {
     return res
       .status(400)
       .json({ message: "Name ,price and image are required" });
@@ -33,7 +33,21 @@ app.post("/api/products", (req, res) => {
     .status(201)
     .json({ message: "Product added succsessfully", product: newProduct });
 });
-app.delete("/api/products", (req, res) => {});
+app.put("/api/products", (req, res) => {});
+app.delete("/api/products/:id", (req, res) => {
+  const id = Number(req.params.id);
+  if (!id) {
+    res.status(400).json({ message: "product  not found" });
+  }
+  let productIndex = products.findIndex((product) => product.id === id);
+  if (productIndex === -1) {
+    res.status(400).json({ message: "product not fount" });
+  }
+  products.splice(productIndex, 1);
+
+  res.status(200).json({ message: "product deleted succsesfully" });
+});
+
 app.listen(port, () => {
   console.log(`your server is live at ${port}`);
 });

@@ -249,3 +249,7 @@ form button:hover {
   color: red;
   background-color: rgb(237, 128, 128);
 }
+a{
+    text-decoration: none;
+    
+}

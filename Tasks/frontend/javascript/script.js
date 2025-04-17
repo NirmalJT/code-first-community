@@ -1,4 +1,6 @@
 let API_URL = "http://localhost:3000/api/products";
+let API_URL_ADMIN = "http://localhost:3000/api/admin";
+
 let product_container = document.querySelector(".product-container");
 const add_btn = document.querySelector("#add-product");
 let isUpdating = false;
@@ -6,6 +8,7 @@ let updateId = null;
 let product_container_admin = document.querySelector(
   ".product-container-admin"
 );
+
 ////using promise
 
 // fetch(url)
@@ -14,6 +17,7 @@ let product_container_admin = document.querySelector(
 //   .catch((error) => console.log(`Error is ${error}`));
 
 /// using async-await
+
 async function fetchData() {
   try {
     let response = await fetch(API_URL);
@@ -23,8 +27,25 @@ async function fetchData() {
     const products = await response.json();
     renderProducts(products);
     renderProducts_admin(products);
+    updateProduct(products);
   } catch (error) {
     console.log(`Error is : ${error}`);
+  }
+}
+async function fetchAdmin() {
+  try {
+    const response = await fetch(API_URL_ADMIN);
+    if (!response.ok) {
+      throw new Error("Failed to fetch admin data");
+    }
+
+    const admin = await response.json();
+    console.log("Admin data:", admin);
+
+    verifyAdmin(admin);
+  } catch (error) {
+    console.error("Error while verifying admin:", error);
+    alert("Unable to verify admin. Try again later.");
   }
 }
 
@@ -61,7 +82,9 @@ function renderProducts(products) {
     console.log(`Error is ${error}`);
   }
 }
+
 //render products in admin panel
+
 function renderProducts_admin(products) {
   try {
     product_container_admin.innerHTML = "";
@@ -97,7 +120,9 @@ function renderProducts_admin(products) {
     console.log(`Error is ${error}`);
   }
 }
+
 //add products
+
 async function addProduct() {
   const addProductForm = document.querySelector("#addProductForm");
   addProductForm.addEventListener("submit", async (e) => {
@@ -130,8 +155,8 @@ async function addProduct() {
     }
   });
 }
+// update products
 
-// update  products
 async function updateProduct(products) {
   const updateBtns = document.querySelectorAll(".update");
 
@@ -142,7 +167,7 @@ async function updateProduct(products) {
   updateBtns.forEach((updateBtn) => {
     updateBtn.addEventListener("click", async (e) => {
       e.preventDefault();
-      const id = updateBtn.getAttribute("data-id");
+      const id = Number(updateBtn.getAttribute("data-id"));
 
       if (!id) {
         alert("Something went wrong");
@@ -154,37 +179,37 @@ async function updateProduct(products) {
         return;
       }
       add_btn.innerHTML = "Update Product";
-      document.querySelector("#name").value = products[productIndex].name;
-      document.querySelector("#price").value = products[productIndex].price;
-      document.querySelector("#image").value = products[productIndex].image;
 
-      add_btn.addEventListener("click", async (e) => {
-        try {
-          const updatedName = document.querySelector("#name").value.trim();
-          const updatedPrice = document.querySelector("#price").value.trim();
-          const updatedImage = document.querySelector("#image").value.trim();
-          const res = await fetch(`${API_URL}/${id}`, {
-            method: "PUT",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ updatedName, updatedPrice, updatedImage }),
-          });
-          if (res.ok) {
-            alert("Product updated successfully");
-          } else {
-            alert("something went wrong try again letter");
-          }
-        } catch (error) {
-          console.log(error);
+      try {
+        e.preventDefault();
+        const updatedName = prompt("Enter your product name");
+        const updatedPrice = prompt("Enter your product price");
+        const updatedImage = prompt("Enter your image url");
+        const res = await fetch(`${API_URL}/${id}`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name: updatedName,
+            price: updatedPrice,
+            image: updatedImage,
+          }),
+        });
+        if (res.ok) {
+          alert("Product updated successfully");
+          fetchData();
+        } else {
           alert("something went wrong try again letter");
         }
-      });
+      } catch (error) {
+        console.log(error);
+        alert("something went wrong try again letter");
+      }
     });
   });
-
-  const id = updateBtn.getAttribute("data-id");
 }
+
 //delete products
 async function deleteProduct() {
   const removeBtns = document.querySelectorAll(".remove");
@@ -222,5 +247,24 @@ async function deleteProduct() {
   });
 }
 
+async function verifyAdmin(admin) {
+  let adminVerifyBtn = document.querySelector("#admin-verify");
+  let adminLink = document.querySelector("#admin-link");
+  adminVerifyBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    let userName = String(prompt("Enter your username"));
+    let password = Number(prompt("Enter your password"));
+    if (!userName || !password) {
+      alert("Username adn password is required");
+      return;
+    }
+    if (admin.userName === userName && admin.password === password) {
+      adminLink.style.display = "inline-block";
+      adminVerifyBtn.style.display = "none";
+    }
+  });
+}
+
 fetchData();
+fetchAdmin();
 addProduct();
